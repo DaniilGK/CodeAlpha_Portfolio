@@ -18,7 +18,6 @@ body {
 .wrapper {
   width: 100%;
   margin: 0 auto;
-  padding: 0.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -84,7 +83,7 @@ body {
 section {
   position: relative;
   min-height: 70vh;
-  padding: 4rem 0;
+  padding: 4rem 2rem;
   scroll-margin-top: 2rem;
 }
 
@@ -128,13 +127,11 @@ section {
   min-height: 90vh;
 }
 .about .scroll-parallax-bg {
-  right: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(81, 231, 236, 0.853), transparent 60%);
+  background: linear-gradient(#6ad0ff, #d9fcf6, rgba(55, 172, 255, 0.2196078431) 70%);
 }
 
 .about-content {
   width: 100%;
-  padding-left: 0.5rem;
   position: relative;
   z-index: 1;
   display: flex;
@@ -178,27 +175,39 @@ section {
   gap: 1rem;
   flex-wrap: wrap;
 }
-.about-links a {
-  background: rgba(255, 255, 255, 0.55);
+.about-links .about-link {
+  background: rgba(255, 255, 255, 0.62);
   border-radius: 999px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.24);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
   color: #000;
   font-weight: 600;
-  padding: 0.55rem 1.3rem;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  padding: 0.8rem 1.5rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
-.about-links a:hover {
-  background-color: #007bff;
-  border-color: transparent;
-  color: #fff;
+.about-links .about-link:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 123, 255, 0.35);
+  color: #007bff;
+}
+
+.link-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 .projects {
   padding-top: 2rem;
+}
+.projects .scroll-parallax-bg {
+  background: linear-gradient(#78cdf4, #d9fcf6, rgba(55, 172, 255, 0.2196078431) 70%);
 }
 
 .slider {
@@ -215,7 +224,7 @@ section {
   --card-width: clamp(260px, 60vw, 340px);
   min-width: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 1.5rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -238,6 +247,8 @@ section {
 .project-card {
   flex: 0 0 var(--card-width);
   width: var(--card-width);
+  display: flex;
+  flex-direction: column;
   scroll-snap-align: center;
   scroll-snap-stop: always;
   transform: scale(0.92);
@@ -265,6 +276,9 @@ section {
 }
 
 .project-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 1.5rem;
 }
 .project-info h3 {
@@ -283,18 +297,21 @@ section {
   flex-wrap: wrap;
   margin-bottom: 1.2rem;
 }
-.project-tags span {
-  background-color: #f0f0f0;
-  color: #333;
-  font-size: 0.8rem;
-  padding: 0.3rem 0.8rem;
-  border-radius: 1rem;
-  border: 1px solid #ccc;
+.project-tags .project-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.project-tags .project-icons .project-icon {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .project-links {
   display: flex;
   gap: 1rem;
+  margin-top: auto;
 }
 .project-links a {
   text-decoration: none;
@@ -320,7 +337,6 @@ section {
   display: grid;
   place-items: center;
   color: #000;
-  line-height: 1;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
@@ -350,28 +366,27 @@ section {
 }
 
 .skill-item {
-  background: rgba(255, 255, 255, 0.62);
-  border-radius: 1rem;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.24);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 0.85rem;
-  padding: 1.6rem 1rem;
+  gap: 0.2rem;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
-.skill-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 123, 255, 0.35);
+.skill-item .skill-icon {
+  width: 2.8rem;
+  height: 2.8rem;
 }
 .skill-item span {
   font-size: 0.9rem;
   font-weight: 600;
 }
 
+@media (hover: hover) {
+  .skill-item:hover {
+    transform: translateY(-4px);
+  }
+}
 .skill-mark {
   width: 3.4rem;
   height: 3.4rem;
@@ -391,7 +406,16 @@ section {
   text-align: center;
 }
 
+.resume-downloads {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  padding-bottom: 1.5rem;
+}
+
 .resume-download {
+  width: 15rem;
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -401,7 +425,6 @@ section {
   font-weight: 600;
   padding: 0.8rem 2rem;
   border-radius: 999px;
-  margin-bottom: 3rem;
   box-shadow: 0 8px 24px rgba(0, 123, 255, 0.28);
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
@@ -409,16 +432,20 @@ section {
   background-color: #0069d9;
   transform: translateY(-2px);
 }
+@media (max-width: 768px) {
+  .resume-download {
+    width: 10rem;
+    font-size: 0.8rem;
+  }
+}
 
 .resume-columns {
+  padding-top: 1.5rem;
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 860px;
-  margin: 0 auto;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .resume-columns h3 {
   font-size: 1.3rem;
@@ -437,9 +464,12 @@ section {
 }
 
 .resume-item {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   padding-left: 1rem;
   border-left: 3px solid rgba(0, 123, 255, 0.45);
+}
+.resume-item:last-child {
+  margin-bottom: 0.4rem;
 }
 .resume-item .resume-date {
   font-size: 0.8rem;
@@ -541,7 +571,6 @@ section {
 .scroll-parallax-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 40% 20%, rgba(80, 151, 213, 0.2), transparent 60%);
   z-index: -1;
   pointer-events: none;
   will-change: transform;
@@ -604,11 +633,14 @@ section {
   }
   section {
     min-height: auto;
-    padding: 3rem 0;
+    padding: 3rem 0.5rem;
     scroll-margin-top: 5.5rem;
   }
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .resume-columns {
+    grid-template-columns: 1fr;
   }
   .about {
     min-height: auto;

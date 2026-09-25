@@ -160,8 +160,13 @@ function initNavHighlight() {
 
 function initPointerParallax() {
     const shapes = document.querySelectorAll('.global-parallax-bg [data-speed]');
+    const mobile = window.matchMedia('(pointer: coarse), (max-width: 768px)');
+
+    if (mobile.matches) return;
 
     document.addEventListener('mousemove', event => {
+        if (mobile.matches) return;
+
         const offsetX = event.clientX - window.innerWidth / 2;
         const offsetY = event.clientY - window.innerHeight / 2;
 
